@@ -1,6 +1,7 @@
+# Schlagzeilen-Generator
 
-# git clone ...
-# cd phrasen
-# composer install
-# php -S 0.0.0.0:12345 -t htdocs/
-# xdg-open http://localhost:12345/
+1. git clone ...
+2. cd phrasen
+3. composer install
+4. php -S 0.0.0.0:12345 -t htdocs/
+5. xdg-open http://localhost:12345/
