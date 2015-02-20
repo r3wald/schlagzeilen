@@ -15,11 +15,25 @@ $app['debug'] = true;
 
 $app->get('/',
     function () {
+        $html = '<html><head></head><body>';
+        $html .= '<a href="/new">Neue Schlagzeile erzeugen</a><br>';
+        $html .= '<a href="/list">Alle Schlagzeilen anzeigen</a><br>';
+        $html .= '</body></html>';
+        return $html;
+    }
+);
+
+$app->get('/new',
+    function () {
         $g = new \Application\Generator(__DIR__ . '/../data/');
         $headline = $g->generate();
         $s = new \Application\Storage(__DIR__ . '/../storage/');
         $s->save($headline);
-        return $headline;
+
+        $html = '<html><head></head><body>';
+        $html .= $headline;
+        $html .= '</body></html>';
+        return $html;
     }
 );
 
@@ -27,6 +41,7 @@ $app->get('/list',
     function () {
         $s = new \Application\Storage(__DIR__ . '/../storage/');
         $headlines = $s->getList();
+        
         $html = '<html><head></head><body><ul>';
         foreach ($headlines as $headline)
         $html .= '<li>' . $headline . '</li>';
